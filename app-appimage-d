@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+apps_path="$HOME/apps"
+
+# apps urls
+neovim_url="https://github.com/neovim/neovim/releases/latest/download/nvim.appimage"
+
+# neovim
+if [ ! -x $apps_path/neovim/nvim.appimage ]
+then
+	echo "Downloading neovim..."
+	mkdir -p "$apps_path/neovim"
+	cd "$apps_path/neovim" && curl -LO "$neovim_url"
+	chmod u+x "$apps_path/neovim/nvim.appimage"
+fi
